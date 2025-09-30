@@ -4,10 +4,8 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                // Run some test command
-                bat 'echo Running tests...'
-                // Copy full Jenkins console log for this build
-                bat "copy %WORKSPACE%\\..\\${env.JOB_NAME}@tmp\\logs\\${env.BUILD_NUMBER}.log test.log"
+
+                bat 'echo Running tests... > test.log'
             }
             post {
                 always {
@@ -23,10 +21,8 @@ pipeline {
 
         stage('Security Scan') {
             steps {
-                // Run some scan command
-                bat 'echo Running security scan...'
-                // Copy full Jenkins console log for this build
-                bat "copy %WORKSPACE%\\..\\${env.JOB_NAME}@tmp\\logs\\${env.BUILD_NUMBER}.log scan.log"
+
+                bat 'echo Running security scan... > scan.log'
             }
             post {
                 always {
